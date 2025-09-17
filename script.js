@@ -1,3 +1,55 @@
+// Theme management
+const themes = ['auto', 'light', 'dark'];
+let currentThemeIndex = 0;
+
+function setTheme(theme) {
+    const body = document.body;
+    const themeIcon = document.querySelector('.theme-icon');
+    
+    // Remove existing theme classes
+    body.removeAttribute('data-theme');
+    
+    if (theme === 'auto') {
+        // Auto theme - use system preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+            body.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '🌙';
+        } else {
+            themeIcon.textContent = '☀️';
+        }
+    } else if (theme === 'light') {
+        themeIcon.textContent = '☀️';
+    } else if (theme === 'dark') {
+        body.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '🌙';
+    }
+    
+    // Save theme preference
+    localStorage.setItem('theme', theme);
+}
+
+function cycleTheme() {
+    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    setTheme(themes[currentThemeIndex]);
+}
+
+// Initialize theme
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme && themes.includes(savedTheme)) {
+        currentThemeIndex = themes.indexOf(savedTheme);
+    }
+    setTheme(themes[currentThemeIndex]);
+}
+
+// Listen for system theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+    if (themes[currentThemeIndex] === 'auto') {
+        setTheme('auto');
+    }
+});
+
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
     // Add smooth scrolling to all anchor links
@@ -52,6 +104,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initial call to set active link
     updateActiveNavLink();
+    
+    // Initialize theme
+    initTheme();
+    
+    // Add theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', cycleTheme);
+    }
 });
 
 // Add some interactivity to the CV download
