@@ -13,31 +13,9 @@ body {
 }
 
 .container {
-    max-width: 960px;
+    max-width: 768px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-/* Header */
-.header {
-    background: white;
-    color: #333;
-    padding: 40px 0;
-    text-align: center;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.name {
-    font-size: 2.8rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    letter-spacing: -0.02em;
-}
-
-.title {
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: #666;
 }
 
 /* Navigation */
@@ -47,6 +25,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    margin-top: 0;
 }
 
 /* Dark theme styles */
@@ -68,18 +47,24 @@ body {
 
 .nav-list a {
     display: block;
-    padding: 20px 0;
+    padding: 18px 0;
     text-decoration: none;
     color: #333;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.2rem;
     transition: color 0.3s ease;
     border-bottom: 3px solid transparent;
 }
 
 .nav-list a:hover {
-    color: #667eea;
-    border-bottom-color: #667eea;
+    color: #2c3e50;
+    border-bottom-color: #2c3e50;
+}
+
+.nav-list a.active {
+    color: #2c3e50;
+    border-bottom-color: #2c3e50;
+    font-weight: 600;
 }
 
 /* Theme switcher styles */
@@ -91,15 +76,15 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 20px 0;
-    font-size: 1.2rem;
+    padding: 24px 0;
+    font-size: 1.0rem;
     transition: all 0.3s ease;
     border-bottom: 3px solid transparent;
 }
 
 .theme-button:hover {
     transform: scale(1.1);
-    border-bottom-color: #667eea;
+    border-bottom-color: #2c3e50;
 }
 
 .theme-icon {
@@ -123,7 +108,7 @@ body {
 
 /* Main content */
 .main-content {
-    padding: 60px 0;
+    padding: 40px 0;
 }
 
 /* Dark theme main content */
@@ -147,32 +132,32 @@ body {
 }
 
 .section h2 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 600;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     color: #2c3e50;
-    border-bottom: 3px solid #667eea;
-    padding-bottom: 10px;
+    border-bottom: 3px solid #2c3e50;
+    padding-bottom: 8px;
 }
 
 .section h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    margin: 30px 0 15px 0;
+    margin: 25px 0 12px 0;
     color: #34495e;
 }
 
 .section h4 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    margin: 20px 0 10px 0;
+    margin: 18px 0 8px 0;
     color: #2c3e50;
 }
 
 .content p {
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-    line-height: 1.7;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 /* Dark theme text colors */
@@ -201,11 +186,21 @@ body {
 
 .research-list li {
     background: #f8f9fa;
-    padding: 15px 20px;
-    margin-bottom: 10px;
-    border-left: 4px solid #667eea;
+    padding: 12px 18px;
+    margin-bottom: 8px;
+    border-left: 4px solid #2c3e50;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 0.95rem;
+}
+
+.research-list li a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.research-list li a:hover {
+    text-decoration: underline;
 }
 
 /* Dark theme list items */
@@ -217,14 +212,14 @@ body {
 
 .project {
     background: #f8f9fa;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 16px;
+    margin-bottom: 16px;
     border-radius: 6px;
-    border-left: 4px solid #764ba2;
+    border-left: 4px solid #34495e;
 }
 
 .project p {
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 /* Dark theme projects */
@@ -241,12 +236,12 @@ body {
 
 .publication-list li {
     background: #f8f9fa;
-    padding: 15px 20px;
-    margin-bottom: 15px;
+    padding: 12px 18px;
+    margin-bottom: 12px;
     border-radius: 6px;
-    border-left: 4px solid #667eea;
-    line-height: 1.6;
-    font-size: 1rem;
+    border-left: 4px solid #2c3e50;
+    line-height: 1.5;
+    font-size: 0.95rem;
 }
 
 .publication-list strong {
@@ -267,7 +262,7 @@ body {
 /* CV section */
 .cv-download {
     display: inline-block;
-    background: #667eea;
+    background: #2c3e50;
     color: white;
     padding: 12px 24px;
     text-decoration: none;
@@ -278,7 +273,7 @@ body {
 }
 
 .cv-download:hover {
-    background: #5a6fd8;
+    background: #34495e;
 }
 
 .education-item,
@@ -287,7 +282,7 @@ body {
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 6px;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #2c3e50;
 }
 
 .teaching-list,
@@ -300,11 +295,11 @@ body {
 .awards-list li,
 .outreach-list li {
     background: #f8f9fa;
-    padding: 12px 20px;
-    margin-bottom: 8px;
+    padding: 10px 16px;
+    margin-bottom: 6px;
     border-radius: 4px;
-    border-left: 3px solid #764ba2;
-    font-size: 1rem;
+    border-left: 3px solid #34495e;
+    font-size: 0.95rem;
 }
 
 /* Dark theme other lists */
@@ -321,12 +316,12 @@ body {
     background: #f8f9fa;
     padding: 30px;
     border-radius: 8px;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #2c3e50;
 }
 
 .contact-info p {
-    margin-bottom: 15px;
-    font-size: 1.3rem;
+    margin-bottom: 12px;
+    font-size: 1rem;
 }
 
 /* Dark theme contact */
@@ -357,9 +352,6 @@ body {
         padding: 0 15px;
     }
     
-    .name {
-        font-size: 2.2rem;
-    }
     
     .nav-list {
         flex-direction: column;
@@ -410,6 +402,6 @@ html {
 /* Focus styles for accessibility */
 a:focus,
 button:focus {
-    outline: 2px solid #667eea;
+    outline: 2px solid #2c3e50;
     outline-offset: 2px;
 }
