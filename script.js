@@ -14,10 +14,8 @@ function setTheme(theme) {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         if (prefersDark) {
             body.setAttribute('data-theme', 'dark');
-            themeIcon.textContent = '🌙';
-        } else {
-            themeIcon.textContent = '☀️';
         }
+        themeIcon.textContent = '🌓';
     } else if (theme === 'light') {
         themeIcon.textContent = '☀️';
     } else if (theme === 'dark') {
@@ -39,6 +37,9 @@ function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme && themes.includes(savedTheme)) {
         currentThemeIndex = themes.indexOf(savedTheme);
+    } else {
+        // Default to auto theme
+        currentThemeIndex = 0; // auto is at index 0
     }
     setTheme(themes[currentThemeIndex]);
 }
