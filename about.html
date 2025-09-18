@@ -9,6 +9,63 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* About page specific photo layout */
+        .about-intro {
+            display: grid !important;
+            grid-template-columns: 70% 30% !important;
+            gap: 30px;
+            margin-bottom: 30px;
+            align-items: start;
+            width: 100%;
+        }
+        
+        .photo-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 30% !important;
+            max-width: 30% !important;
+        }
+        
+        .profile-photo {
+            width: 150px !important;
+            height: 150px !important;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #2c3e50;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .intro-text {
+            width: 70% !important;
+            max-width: 70% !important;
+        }
+        
+        /* Dark theme photo */
+        [data-theme="dark"] .profile-photo {
+            border-color: #3498db;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .about-intro {
+                grid-template-columns: 1fr !important;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .photo-container {
+                order: -1;
+            }
+            
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navigation">
@@ -29,19 +86,23 @@
     <main class="main-content">
         <div class="container">
             <section class="section">
-                <h2>About</h2>
+                <h2>Yinrui Liu</h2>
                 <div class="content">
-                    <p>Welcome to my academic portfolio. I am a researcher and scholar with interests in [your field]. This site showcases my research contributions, publications, and academic achievements.</p>
-                    <p>I am currently [your current position/status] and am seeking opportunities in [your target positions].</p>
+                    <div class="about-intro">
+                        <div class="intro-text">
+                            <p>Welcome to my academic portfolio. This page is mainly for postdoc fellowship application purposes. I am a Ph.D. student at the University of Chicago working on experimental particle physics. I'm pursuing a postdoc career to explore AI for particle physics.</p>
+                        </div>
+                        <div class="photo-container">
+                            <img src="figures/profile_photo.jpg" alt="Yinrui Liu" class="profile-photo">
+                        </div>
+                    </div>
                     
-                    <h3>Background</h3>
-                    <p>Brief description of your academic background, education, and career path.</p>
+                    <h3>Research</h3>
+                    <p>I work on experimental particle physics, with a focus on the neutrino physics.</p>
                     
-                    <h3>Research Philosophy</h3>
-                    <p>Describe your approach to research, methodology, and what drives your academic interests.</p>
+                    <h3>Outreach</h3>
+                    <p>I'm also enthusiastic about sharing my knowledge and engaging with the broader community through various outreach activities.</p>
                     
-                    <h3>Current Focus</h3>
-                    <p>What you're currently working on and your main research directions.</p>
                 </div>
             </section>
         </div>
