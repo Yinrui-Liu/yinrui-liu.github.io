@@ -13,24 +13,24 @@
         /* About page specific photo layout */
         .about-intro {
             display: grid !important;
-            grid-template-columns: 70% 30% !important;
-            gap: 30px;
+            grid-template-columns: 60% 40% !important;
+            gap: 40px;
             margin-bottom: 30px;
-            align-items: start;
+            align-items: center;
             width: 100%;
         }
         
         .photo-container {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            width: 30% !important;
-            max-width: 30% !important;
+            align-items: center;
+            width: 40% !important;
+            max-width: 40% !important;
         }
         
         .profile-photo {
-            width: 150px !important;
-            height: 150px !important;
+            width: 200px !important;
+            height: 200px !important;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #2c3e50;
@@ -38,8 +38,12 @@
         }
         
         .intro-text {
-            width: 70% !important;
-            max-width: 70% !important;
+            width: 60% !important;
+            max-width: 60% !important;
+        }
+        
+        .intro-text p {
+            margin-left: 40px;
         }
         
         /* Dark theme photo */
@@ -61,8 +65,8 @@
             }
             
             .profile-photo {
-                width: 150px;
-                height: 150px;
+                width: 200px;
+                height: 200px;
             }
         }
     </style>
@@ -90,13 +94,17 @@
                 <div class="content">
                     <div class="about-intro">
                         <div class="intro-text">
-                            <p>Welcome to my academic portfolio. This page is mainly for postdoc fellowship application purposes. I am a Ph.D. student at the University of Chicago working on experimental particle physics. I'm pursuing a postdoc career to explore AI for particle physics.</p>
+                            <p>Email</p>
+                            <p>GitHub</p>
+                            <p>CV</p>
                         </div>
                         <div class="photo-container">
                             <img src="figures/profile_photo.jpg" alt="Yinrui Liu" class="profile-photo">
                         </div>
                     </div>
                     
+                    <p>Welcome to my academic portfolio. This page is mainly for postdoc fellowship application purposes. I am a Ph.D. student at the University of Chicago working on experimental particle physics. I'm pursuing a postdoc career to explore AI for particle physics.</p>
+
                     <h3>Research</h3>
                     <p>I work on experimental particle physics, with a focus on the neutrino physics.</p>
                     
