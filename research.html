@@ -9,6 +9,16 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
     <style>
         /* LaTeX-like figure layout system */
         .figures-row {
@@ -44,7 +54,7 @@
             left: 0;
             top: 50%;
             transform: translateY(-50%);
-            width: 200px;
+            width: 300px; /* Adjust this value: 250px = wider, 300px = even wider */
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 0 15px 15px 0;
@@ -55,7 +65,7 @@
         }
         
         .left-navigator:hover {
-            width: 220px;
+            width: 300px; /* Adjust this value: should be wider than default width */
             box-shadow: 2px 0 25px rgba(0, 0, 0, 0.15);
         }
         
@@ -182,8 +192,12 @@
     <nav class="left-navigator">
         <h4>Research Sections</h4>
         <ul>
-            <li><a href="#fsi-research" class="nav-link">FSI Research</a></li>
-            <li><a href="#lartpc-research" class="nav-link">LArTPC Research</a></li>
+            <li><a href="#fsi-research" class="nav-link">Transformer Model for Particle Propagation within the Nucleus</a></li>
+            <li><a href="#generative-models" class="nav-link">Generative Models for Fast Simulation of LArTPC Events</a></li>
+            <li><a href="#hadron-argon" class="nav-link">Hadron-Argon Cross-Section Measurements at ProtoDUNE (Thesis Analysis)</a></li>
+            <li><a href="#fsi-modeling" class="nav-link">Final-State Interaction (FSI) Modeling in Neutrino Generators</a></li>
+            <li><a href="#detector-production" class="nav-link">Detector Modules Production and Installation for DUNE</a></li>
+            <li><a href="#tetraquark" class="nav-link">Observation of the First Doubly-Charged Tetraquark Particle</a></li>
             <li><a href="#publications" class="nav-link">Publications</a></li>
         </ul>
     </nav>
@@ -192,10 +206,19 @@
         <div class="container">
             <section class="section">
                 <div class="content">
-                    <p>I work on experimental particle physics, with a focus on the neutrino physics.</p>
+                    <p>
+                        <img src="figures/ProtoDUNE.png" alt="ProtoDUNE" style="float: right; width: 320px; height: auto; margin: 0 0 10px 15px; border-radius: 2px;">
+                        I am an experimental particle physicsist, with a focus on the Deep Underground Neutrino Experiment (<a href="https://www.dunescience.org" class="nav-link">DUNE</a>) during my PhD.
+                        My work ranges from data analysis, physics modeling, detector production, and developing AI/ML-based physics simulations.
+                        Below highlights some of my research works during my PhD.
+                    </p>
                     
-                    <h3 id="fsi-research">Transformer Model for Final-State Interactions (FSI) in Neutrino Simulation</h3>
-                    <p>Description of your work on transformer models for neutrino simulation and final-state interactions.</p>
+                    <h3 id="fsi-research">Transformer Model for Particle Propagation within the Nucleus</h3>
+                    <p>When a neutrino is detected through its interaction with nucleus, it may create hadronic particles, 
+                    which rescatter on nucleons before exiting the nucleus. This effect, called "final-state interactions" (FSI),
+                    is a dominate source of uncertainty in interaction models, and advanced models are computationally expensive.
+                    Working with Kazu Terao and Patrick Tsang at SLAC, we seek to develop a model which is trained on the advanced
+                    simulations so as to predict particle propagation within the nucleus.</p>
                     
                     <div class="figures-row figures-3">
                         <img src="figures/fsi_figure1.jpg" alt="FSI Figure 1" class="figure" style="width: 100%; max-width: 200px;">
@@ -203,12 +226,70 @@
                         <img src="figures/fsi_figure3.jpg" alt="FSI Figure 3" class="figure" style="width: 100%; max-width: 200px;">
                     </div>
                     
-                    <h3 id="lartpc-research">Generative Models for Fast Event Simulation of Liquid Argon Time Projection Chamber (LArTPC)</h3>
+                    <h3 id="generative-models">Generative Models for Fast Simulation of LArTPC Events</h3>
                     <p>Description of your work on generative models for fast event simulation in LArTPC detectors.</p>
                     
                     <div class="figures-row figures-2">
                         <img src="figures/lartpc_figure1.jpg" alt="LArTPC Figure 1" class="figure" style="width: 100%; max-width: 200px;">
                         <img src="figures/lartpc_figure2.jpg" alt="LArTPC Figure 2" class="figure" style="width: 100%; max-width: 200px;">
+                    </div>
+
+                    <h3 id="hadron-argon">Hadron-Argon Cross-Section Measurements at ProtoDUNE (PhD Thesis)</h3>
+                    <p>In my thesis analysis, I led the flagship cross-section measurement at ProtoDUNE, 
+                        which is the total inelastic cross section of pion and proton on argon targets in the sub-GeV energy regime. 
+                        Such measurements are critical input for DUNE neutrino interaction models as they provide the first argon dataset for constraining the final-state interactions (FSI) in DUNE energy regime.
+                        I conducted end-to-end data analysis, and developed a statistical framework for hadron-argon cross-section measurements [<a href="https://www.mdpi.com/2410-390X/8/1/15" class="nav-link">Instruments</a>, <a href="https://github.com/Yinrui-Liu/hadron-Ar_XS" class="nav-link">GitHub</a>].
+                        The physics result is completing DUNE internal review, with a <a href="https://docs.dunescience.org/cgi-bin/private/ShowDocument?docid=30273" class="nav-link">publication</a> to be submitted to PRL. 
+                        The figures below present the main results showing the measured cross sections along with model predictions (left for pion and right for proton).
+                    </p>
+                    
+                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 10px; align-items: center;">
+                        <img src="figures/XS_model_211.png" alt="LArTPC Figure 1" class="figure" style="height: 230px; object-fit: contain;">
+                        <img src="figures/XS_model_2212.png" alt="LArTPC Figure 2" class="figure" style="height: 230px; object-fit: contain;">
+                    </div>
+
+                    <h3 id="fsi-modeling">Final-State Interaction (FSI) Modeling in Neutrino Generators</h3>
+                    <p>To further study how to utilize ProtoDUNE data to inform DUNE neutrino interaction models, I work with Stephen Dolan and Laura Munteanu at CERN and conducted several studies on FSI models in neutrino generators,
+                        including developing a reweighting tool facilitating FSI model transformation, which has been integrated into <a href="https://github.com/NuSystematics/nusystematics" class="nav-link">NuSystematics</a>.
+                        As a capstone, we recently worked on a <a href="https://docs.dunescience.org/cgi-bin/private/ShowDocument?docid=34761" class="nav-link">theory paper</a> which studies the impact of FSI modeling on neutrino oscillation parameters. 
+                        With DUNE as a case study, the figures below show how variations of using different FSI models can obscure genuine oscillation effects (particularly from the bottom ratio plots), 
+                        with the left figure focusing on $\Delta m^2_{21}$ in the $\nu_\mu$ disappearance analysis and the right figure focusing on the $\theta_{12}$ in the $\nu_e$ appearance analysis.
+                    </p>
+                    
+                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 20px; align-items: center;">
+                        <img src="figures/FSI_numu_m23.png" alt="LArTPC Figure 1" class="figure" style="height: 300px; object-fit: contain;">
+                        <img src="figures/FSI_nue_dCP90.png" alt="LArTPC Figure 2" class="figure" style="height: 300px; object-fit: contain;">
+                    </div>
+
+                    <h3 id="detector-production">Detector Modules Production and Installation for DUNE</h3>
+                    <p>DUNE's design centers on the liquid argon time projection chamber (LArTPC) technology. 
+                        The most common design, also adopted by DUNE's first far detector (FD1) design, is to use wire planes, also called anode plane assembly (APA).
+                        This <a href="https://hep.yale.edu/yale-henp/lartpc" class="nav-link">page</a> provides a nice description of how LArTPC works with wire detection systems.
+                        UChicago opens a APA factory to produce the detector modules for DUNE FD1, and I am involved in the preparation of the bare frame, before moving it to a robotic machine called "winder". 
+                        The figures below show the APA on the red winder (from the light reflection you can see multiple wire layers with different lining directions) and a piece of video showing the winder in action to wind the wires.
+                        In addition, I was also at CERN in 2022 for the installation of ProtoDUNE and in 2024 serving as a data shifter during summer times.
+                    </p>
+                    
+                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 30px; align-items: center;">
+                        <img src="figures/APA-winder.png" alt="APA Winder" class="figure" style="height: 270px; object-fit: contain;">
+                        <video src="figures/APA-winding.mov" class="figure" style="height: 270px; object-fit: contain;" controls>
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <h3 id="tetraquark">Observation of the First Doubly-Charged Tetraquark Particle</h3>
+                    <p>Normal hadronic matters consists of either two or three quarks, which are called mesons and baryons.
+                        Only in this century, hadronic particles consists of four and five quarks, called tetraquarks and pentaquarks, are discovered, 
+                        which are referred to as exotic hadrons. In my early PhD, I continued my undergraduate research on hadron spectroscopy using LHCb data. 
+                        I made major contributions to a generic framework for partial wave analysis (PWA) based on TensorFlow (called <a href="https://github.com/jiangyi15/tf-pwa" class="nav-link">TF-PWA</a>),
+                        and applied it to a pair of isospin-related $B$ meson decays. 
+                        I led the analysis which resulted in the observation of the first doubly-charged tetraquark $T^a_{c\bar{s}0}(2900)^{++}$ and its neutral partner $T^a_{c\bar{s}0}(2900)^{0}$, with publications on <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.131.041902" class="nav-link">PRL</a> and <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.108.012017" class="nav-link">PRD</a>.
+                        The figures below show the excess of $T^a_{c\bar{s}0}(2900)^{++}$ in the mass spectrum and its imagination by CERN artists.
+                    </p>
+                    
+                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 10px; align-items: center;">
+                        <img src="figures/LHCb-excess.png" alt="LArTPC Figure 1" class="figure" style="height: 210px; object-fit: contain;">
+                        <img src="figures/LHCb-art.png" alt="LArTPC Figure 2" class="figure" style="height: 210px; object-fit: contain;">
                     </div>
                     
                 </div>
@@ -218,27 +299,54 @@
             <section class="section">
                 <h2 id="publications">Publications</h2>
                 <div class="content">
-                    <h3>Journal Articles</h3>
                     <ul class="publication-list">
                         <li>
-                            <strong>Author, Y. L.</strong> (Year). Title of the paper. <em>Journal Name</em>, Volume(Issue), pages. DOI: [if available]
+                            DUNE Collaboration, First Measurement of $\pi^+$–Ar and $p$–Ar Total Inelastic Cross Sections in the Sub-GeV Energy Regime with ProtoDUNE-SP Data. <a href="https://docs.dunescience.org/cgi-bin/ShowDocument?docid=30273" target="_blank">DUNE-doc-30273</a> (under DUNE Collaboration internal review)
                         </li>
                         <li>
-                            <strong>Author, Y. L.</strong> (Year). Title of the paper. <em>Journal Name</em>, Volume(Issue), pages. DOI: [if available]
+                            Y. Liu, et al., The Sensitivity of Neutrino Energy Reconstruction to the Modeling of Final-State Interactions and Their Impact on Neutrino Oscillation Measurements. <a href="https://docs.dunescience.org/cgi-bin/private/ShowDocument?docid=34761" target="_blank">DUNE-doc-34761</a> (under DUNE Collaboration internal review)
                         </li>
+                        <li>
+                            DUNE Collaboration, First measurement of the total inelastic cross section of positively charged kaons on argon at energies between 5.0 and 7.5 GeV. <a href="https://doi.org/10.1103/PhysRevD.110.092011" target="_blank">Phys. Rev. D 110 (2024) 9, 092011</a> (Aug. 1, 2024)
+                        </li>
+                        <li>
+                            Y. Liu, A modified slicing method with multi-dimensional unfolding to measure hadron-argon cross sections. <a href="https://doi.org/10.3390/instruments8010015" target="_blank">Instruments 8 (2024) 1, 15</a> (Dec. 14, 2023)
+                        </li>
+                        <li>
+                            LHCb Collaboration, First Observation of a Doubly Charged Tetraquark and Its Neutral Partner. <a href="https://doi.org/10.1103/PhysRevLett.131.041902" target="_blank">Phys. Rev. Lett. 131 (2023) 4, 041902</a> (Dec. 5, 2022)
+                        </li>
+                        <li>
+                            LHCb Collaboration, Amplitude analysis of $B^0 \to \bar{D}^0 D_s^+ K\pi^-$ and $B^+ \to D^- D^+_s \pi^+$ decays. <a href="https://doi.org/10.1103/PhysRevD.108.012017" target="_blank">Phys. Rev. D 108 (2023) 1, 012017</a> (Dec. 5, 2022)
+                        </li>
+                        <li>
+                            M. Wang, et al., A novel method to best particle ordering and final state alignment in helicity formalism. <a href="https://doi.org/10.1088/1674-1137/abf139" target="_blank">Chin. Phys. C 45 (2021) 6, 063103</a> (Dec. 7, 2020)
+                        </li>
+                        <p style="font-size: 15px;">(The above works represent my major contributions. A complete list of publications is available on my <b>INSPIRE-HEP <a href="https://inspirehep.net/authors/1829959" target="_blank">author page</a></b>.)</p>
                     </ul>
                     
-                    <h3>Conference Papers</h3>
+                    <h3>Conference Presentations</h3>
                     <ul class="publication-list">
                         <li>
-                            <strong>Author, Y. L.</strong> (Year). Title of the conference paper. In <em>Proceedings of Conference Name</em> (pp. pages). Publisher.
+                            Hadron-argon cross-section measurements at ProtoDUNE—status and prospects (<a href="https://summit.aps.org/events/APR-S10" target="_blank">oral</a>), Mar. 19, 2025 at <em>APS Joint March and April Meeting Global Physics Summit</em>, Anaheim, CA, USA
+                        </li>
+                        <li>
+                            Pion-argon and proton-argon inclusive cross-section measurement using ProtoDUNE-SP 1 GeV beam data (<a href="https://indico.cern.ch/event/1291157/contributions/5901055/" target="_blank">poster</a>), July 19, 2024 at <em>ICHEP 2024: the 42th International Conference on High Energy Physics</em>, Prague, Czech Republic
+                        </li>
+                        <li>
+                            A modified slicing method with multi-dimensional unfolding to measure hadron-argon cross-section on ProtoDUNE-SP (<a href="https://indico.cern.ch/event/1302529/contributions/5561238/" target="_blank">oral</a>), Oct. 4, 2023 at <em>NuXTract 2023 – Towards a consensus in neutrino cross sections</em>, Geneva, Switzerland
+                        </li>
+                        <li>
+                            Pion-argon inclusive cross-section measurement on ProtoDUNE-SP (<a href="https://indico.fnal.gov/event/53004/contributions/243620/" target="_blank">oral</a>), Aug. 5, 2022 at <em>NuFact 2022: The 23rd International Workshop on Neutrinos from Accelerators</em>, Salt Lake City, UT, USA
                         </li>
                     </ul>
 
-                    <h3>Working Papers</h3>
+                    <h3>Seminar talks</h3>
                     <ul class="publication-list">
                         <li>
-                            <strong>Author, Y. L.</strong> (Year). Title of working paper. <em>Working Paper Series</em>, Institution.
+                            Hadron-argon cross-section measurements at ProtoDUNE and their implications for DUNE (<a href="https://indico.slac.stanford.edu/event/10003/" target="_blank">link</a>), August 14, 2025 at <em>SLAC Fundamental Physics Directorate (FPD) Seminar</em>, Stanford, CA, USA
+                        </li>
+                        <li>
+                            Why is neutrino physics important and hard to study—an introductory to the DUNE experiment and my thesis research (<a href="https://indico.ihep.ac.cn/event/20004/" target="_blank">link</a>), June 20, 2023 at the Institute of High Energy Physics (IHEP), Beijing, China
                         </li>
                     </ul>
                 </div>
