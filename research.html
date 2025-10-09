@@ -207,35 +207,58 @@
             <section class="section">
                 <div class="content">
                     <p>
-                        <img src="figures/ProtoDUNE.png" alt="ProtoDUNE" style="float: right; width: 320px; height: auto; margin: 0 0 10px 15px; border-radius: 2px;">
+                        <figure style="float: right; width: 365px; margin: 0 0 10px 15px;">
+                            <img src="figures/ProtoDUNE.png" alt="ProtoDUNE" style="width: 100%; height: auto; border-radius: 2px;">
+                            <figcaption style="font-size: 12px; text-align: center; margin-top: 5px; font-style: normal;">A photo inside DUNE's prototype detector, ProtoDUNE at CERN. The future DUNE far detector modules will be 20 times larger!</figcaption>
+                        </figure>
                         I am an experimental particle physicsist, with a focus on the Deep Underground Neutrino Experiment (<a href="https://www.dunescience.org" class="nav-link">DUNE</a>) during my PhD.
                         My work ranges from data analysis, physics modeling, detector production, and developing AI/ML-based physics simulations.
                         Below highlights some of my research works during my PhD.
                     </p>
                     
-                    <h3 id="fsi-research">Transformer Model for Particle Propagation within the Nucleus</h3>
-                    <p>When a neutrino is detected through its interaction with nucleus, it may create hadronic particles, 
-                    which rescatter on nucleons before exiting the nucleus. This effect, called "final-state interactions" (FSI),
-                    is a dominate source of uncertainty in interaction models, and advanced models are computationally expensive.
-                    Working with Kazu Terao and Patrick Tsang at SLAC, we seek to develop a model which is trained on the advanced
-                    simulations so as to predict particle propagation within the nucleus.</p>
+                    <h3 id="fsi-research" style="margin-top: 20px;">Transformer Model for Particle Propagation within the Nucleus</h3>
+                    <p>When a neutrino is detected through its interaction with nucleus, it creates hadronic particles which undergo rescattering within the nucleus, complicating final-state reconstruction. 
+                        This effect, called "final-state interactions" (FSI), has been a focus of neutrino interaction modeling. However, advanced models are computationally expensive. 
+                        Working with Kazu Terao and Patrick Tsang at SLAC, we developed a transformer model that is trained on the advanced simulations.
+                        Analogous to words in language models, different types of particles are treated as tokens, with spatial coordinates and four-momenta as feature variables.
+                        The animation below shows an example of particle propagation within the nucleus from the GiBUU simulator, and the right figure shows the class confusion matrix between the predicted and true particle types, with an overall accuracy of 97%. 
+                        Our current efforts focus on upscaling the sample size and achieving a more balanced training set, and ultimately, we aim to use this brand new method for neutrino event generation.
+                    </p>
                     
-                    <div class="figures-row figures-3">
-                        <img src="figures/fsi_figure1.jpg" alt="FSI Figure 1" class="figure" style="width: 100%; max-width: 200px;">
-                        <img src="figures/fsi_figure2.jpg" alt="FSI Figure 2" class="figure" style="width: 100%; max-width: 200px;">
-                        <img src="figures/fsi_figure3.jpg" alt="FSI Figure 3" class="figure" style="width: 100%; max-width: 200px;">
+                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 5px; align-items: center;">
+                        <div style="position: relative; display: inline-block;">
+                            <img src="figures/GiBUU.gif" alt="GiBUU Animation" style="height: 250px; ">
+                            <div style="position: absolute; top: 35px; left: 15px; background: rgba(255,255,255,0); padding: 10px; border-radius: 5px; font-size: 8px; color: black;">
+                                <!--<div style="margin-bottom: 5px;"><span style="color: gray; background-color: gray; border: 0.1px solid gray; border-radius: 50%;">●</span><span style="margin-left: 5px;">Argon nucleus</span></div> -->
+                                <div style="margin-bottom: 5px;"><span style="color: gray;">◎</span><span style="margin-left: 5px;">Argon nucleus</span></div>
+                                <div style="margin-bottom: 5px;"><span style="color: blue;">●</span><span style="margin-left: 5px;">$p$</span></div>
+                                <div style="margin-bottom: 5px;"><span style="color: cyan;">●</span><span style="margin-left: 5px;">$n$</span></div>
+                                <div style="margin-bottom: 5px;"><span style="color: orange;">●</span><span style="margin-left: 5px;">$\pi^+$</span></div>
+                                <div style="margin-bottom: 5px;"><span style="color: gold;">●</span><span style="margin-left: 5px;">$\pi^0$</span></div>
+                                <div style="margin-bottom: 5px;"><span style="color: darkorange;">●</span><span style="margin-left: 5px;">$\pi^-$</span></div>
+                                <div style="margin-bottom: 5px;"><span style="color: black;">●</span><span style="margin-left: 5px;">Other</span></div>
+                            </div>
+                        </div>
+                        <img src="figures/GiBUU_acc.pdf" alt="LArTPC Figure 2" class="figure" style="height: 250px; object-fit: contain;">
                     </div>
                     
                     <h3 id="generative-models">Generative Models for Fast Simulation of LArTPC Events</h3>
-                    <p>Description of your work on generative models for fast event simulation in LArTPC detectors.</p>
+                    <p>As experiments grow more sophisticated and data volume increases, Monte-Carlo simulation gradually becomes a bottleneck.
+                        Take DUNE for example, the time to simulate a neutrino event given current computing devices even takes longer than recording an event at near detector.
+                        By statistically extracting complex physics from high-dimensional parameter spaces, ML-based simulation is promising to speed up the simulation process.
+                        I'm working on developing generative models to simulate LArTPC events. By treating each event as a cloud of energy deposition points, we trained a continuous-normalizing-flow model on Geant4 simulated events.
+                        The figures below show some training events and the generated events, left for shower-like and right for track-like events.
+                        It shows that the generative model successfully replicated the visual features, while differences can still be seen. 
+                        Further quantitative studies are ongoing to ensure the generated events exhibit the same physics as the input simulations.
+                    </p>
                     
-                    <div class="figures-row figures-2">
-                        <img src="figures/lartpc_figure1.jpg" alt="LArTPC Figure 1" class="figure" style="width: 100%; max-width: 200px;">
-                        <img src="figures/lartpc_figure2.jpg" alt="LArTPC Figure 2" class="figure" style="width: 100%; max-width: 200px;">
+                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 5px; align-items: center;">
+                        <img src="figures/Generated_e.png" alt="LArTPC Figure 1" class="figure" style="height: 210px; object-fit: contain;">
+                        <img src="figures/Generated_p.png" alt="LArTPC Figure 2" class="figure" style="height: 210px; object-fit: contain;">
                     </div>
 
                     <h3 id="hadron-argon">Hadron-Argon Cross-Section Measurements at ProtoDUNE (PhD Thesis)</h3>
-                    <p>In my thesis analysis, I led the flagship cross-section measurement at ProtoDUNE, 
+                    <p>In my thesis analysis, I led the flagship cross-section measurements at ProtoDUNE, 
                         which is the total inelastic cross section of pion and proton on argon targets in the sub-GeV energy regime. 
                         Such measurements are critical input for DUNE neutrino interaction models as they provide the first argon dataset for constraining the final-state interactions (FSI) in DUNE energy regime.
                         I conducted end-to-end data analysis, and developed a statistical framework for hadron-argon cross-section measurements [<a href="https://www.mdpi.com/2410-390X/8/1/15" class="nav-link">Instruments</a>, <a href="https://github.com/Yinrui-Liu/hadron-Ar_XS" class="nav-link">GitHub</a>].
