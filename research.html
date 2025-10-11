@@ -9,6 +9,28 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Prevent FOUC by setting theme immediately -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themes = ['auto', 'light', 'dark'];
+            let theme = 'auto'; // default
+            
+            if (savedTheme && themes.includes(savedTheme)) {
+                theme = savedTheme;
+            }
+            
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else if (theme === 'auto') {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (prefersDark) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            }
+        })();
+    </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
@@ -43,7 +65,7 @@
         }
         
         /* Dark theme figures */
-        [data-theme="dark"] .figure {
+        html[data-theme="dark"] .figure {
             border-color: #444;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
@@ -114,25 +136,25 @@
         }
         
         /* Dark theme for left navigator */
-        [data-theme="dark"] .left-navigator {
+        html[data-theme="dark"] .left-navigator {
             background: rgba(30, 30, 30, 0.95);
             box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
         }
         
-        [data-theme="dark"] .left-navigator h4 {
+        html[data-theme="dark"] .left-navigator h4 {
             color: #e5e5e5;
         }
         
-        [data-theme="dark"] .left-navigator a {
+        html[data-theme="dark"] .left-navigator a {
             color: #a0a0a0;
         }
         
-        [data-theme="dark"] .left-navigator a:hover {
+        html[data-theme="dark"] .left-navigator a:hover {
             background: rgba(59, 130, 246, 0.2);
             color: #60a5fa;
         }
         
-        [data-theme="dark"] .left-navigator a.active {
+        html[data-theme="dark"] .left-navigator a.active {
             background: rgba(59, 130, 246, 0.25);
             color: #60a5fa;
         }
@@ -150,11 +172,11 @@
         }
         
         /* Dark theme for main content links */
-        [data-theme="dark"] .nav-link {
+        html[data-theme="dark"] .nav-link {
             color: #60a5fa;
         }
         
-        [data-theme="dark"] .nav-link:hover {
+        html[data-theme="dark"] .nav-link:hover {
             color: #93c5fd;
         }
         

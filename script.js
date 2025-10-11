@@ -3,23 +3,23 @@ const themes = ['auto', 'light', 'dark'];
 let currentThemeIndex = 0;
 
 function setTheme(theme) {
-    const body = document.body;
+    const html = document.documentElement;
     const themeIcon = document.querySelector('.theme-icon');
     
     // Remove existing theme classes
-    body.removeAttribute('data-theme');
+    html.removeAttribute('data-theme');
     
     if (theme === 'auto') {
         // Auto theme - use system preference
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         if (prefersDark) {
-            body.setAttribute('data-theme', 'dark');
+            html.setAttribute('data-theme', 'dark');
         }
         themeIcon.textContent = '🌓';
     } else if (theme === 'light') {
         themeIcon.textContent = '☀️';
     } else if (theme === 'dark') {
-        body.setAttribute('data-theme', 'dark');
+        html.setAttribute('data-theme', 'dark');
         themeIcon.textContent = '🌙';
     }
     
