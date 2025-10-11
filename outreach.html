@@ -9,6 +9,29 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Main content links styling */
+        .content a {
+            color: #3b82f6;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .content a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+        
+        /* Dark theme for main content links */
+        html[data-theme="dark"] .content a {
+            color: #60a5fa;
+        }
+        
+        html[data-theme="dark"] .content a:hover {
+            color: #93c5fd;
+        }
+    </style>
 </head>
 <body>
     <nav class="navigation">
@@ -31,32 +54,35 @@
             <section class="section">
                 <div class="content">
                     <p>I am passionate about science outreach. I have participated in numerous public
-                        science events and am currently organizing an online video program where Ph.D. students from various
-                        fields can introduce their research to a broader audience. </p>
-                    
-                    <h3>Public Talks and Presentations</h3>
-                    <ul class="outreach-list">
-                        <li>Presentation Title, Event Name, Date, Location</li>
-                        <li>Presentation Title, Event Name, Date, Location</li>
-                    </ul>
-                    
-                    <h3>Media and Interviews</h3>
-                    <ul class="outreach-list">
-                        <li>Interview/Article Title, Media Outlet, Date</li>
-                        <li>Interview/Article Title, Media Outlet, Date</li>
-                    </ul>
+                        science events (shout out for the <a href="https://southsidescience.event.uchicago.edu">South Side Science Festival</a> in Chicago). 
+                        And I've always enjoyed sharing and hearing about the research of others.
+                    </p>
 
-                    <h3>Community Engagement</h3>
-                    <ul class="outreach-list">
-                        <li>Activity Description, Organization, Date</li>
-                        <li>Activity Description, Organization, Date</li>
+                    <p>Recalling on my own childhood, I did not have access to many local outreach events. 
+                        With the hope to extend science outreach from local communities to a global audience, 
+                        I launched an online video program🍀, where we aim to have more Ph.D. students various fields involved, to introduce their research to a broader audience. 
+                        I gathered a group of volunteers, and have made plans to start releasing videos on YouTube early next year. Though, I can share below our first video about neutrino physics.
+                        I provided scripts and voiceover in Mandarin, but English subtitles are always available.
+                    </p>
+                    
+                    <div style="text-align: center; margin: 30px 0;">
+                        <video width="800" height="450" controls poster="figures/Neutrino_physics-cover.jpg" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <source src="figures/Neutrino_physics.mov" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p style="font-size: 14px; margin-top: 2px;">Neutrino Physics | The biggest apparatus for the tiniest particle</p>
+                    </div>
+                    
+                    <p>As planned, our first couple of videos in making will be:</p>
+                    
+                    <ul style="margin: 15px 0; padding-left: 20px;">
+                        <li style="margin-bottom: 8px;">Neutrino physics | The biggest apparatus for the tiniest particle</li>
+                        <li style="margin-bottom: 8px;">Astro-chemistry | Extraterrestrial life and how to find them</li>
+                        <li style="margin-bottom: 8px;">Biomedical engineering | From stem cell to organoids</li>
+                        <li style="margin-bottom: 8px;">Socio-neuroscience | Even a white rat is more sympathetic than you</li>
+                        <li style="margin-bottom: 8px;">... and more!</li>
                     </ul>
-
-                    <h3>Teaching and Mentoring</h3>
-                    <ul class="outreach-list">
-                        <li>Course Name, Institution, Semester/Year</li>
-                        <li>Mentoring Activity, Organization, Date</li>
-                    </ul>
+                    <p>Interested?! Please stay tuned when we start to release the videos! Reach out if you are interested (bigscitech_at_gmail_dot_com).</p>
                 </div>
             </section>
         </div>
