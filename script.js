@@ -121,19 +121,17 @@ document.addEventListener('DOMContentLoaded', function() {
         videoCover.addEventListener('click', function() {
             // Hide the cover when clicked
             this.style.display = 'none';
+            
+            // Add autoplay parameter to start video immediately
+            const iframe = document.querySelector('iframe[src*="drive.google.com"]');
+            if (iframe) {
+                const currentSrc = iframe.src;
+                if (!currentSrc.includes('autoplay=1')) {
+                    const separator = currentSrc.includes('?') ? '&' : '?';
+                    iframe.src = currentSrc + separator + 'autoplay=1';
+                }
+            }
         });
-        
-        // Also hide cover when iframe loads (as a backup)
-        const iframe = document.querySelector('iframe[src*="drive.google.com"]');
-        if (iframe) {
-            iframe.addEventListener('load', function() {
-                setTimeout(() => {
-                    if (videoCover) {
-                        videoCover.style.display = 'none';
-                    }
-                }, 1000);
-            });
-        }
     }
 });
 
