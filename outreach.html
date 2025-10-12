@@ -66,11 +66,20 @@
                     </p>
                     
                     <div style="text-align: center; margin: 30px 0;">
-                        <video width="800" height="450" controls poster="figures/Neutrino_physics-cover.jpg" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                            <source src="figures/Neutrino_physics.mov" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <p style="font-size: 14px; margin-top: 2px;">Neutrino Physics | The biggest apparatus for the tiniest particle</p>
+                        <!-- Google Drive embed with cover image -->
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 800px; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <iframe src="https://drive.google.com/file/d/1nwzloNPOpTCFZkFMl9U5Ytex16cX6LtZ/preview" 
+                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                                    allowfullscreen>
+                            </iframe>
+                            <!-- Cover image overlay (hidden when video loads) -->
+                            <div id="video-cover" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('figures/Neutrino_physics-cover.jpg'); background-size: cover; background-position: center; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                <div style="background: rgba(0,0,0,0.7); border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease;">
+                                    <div style="width: 0; height: 0; border-left: 25px solid white; border-top: 15px solid transparent; border-bottom: 15px solid transparent; margin-left: 5px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="font-size: 14px; margin-top: 8px;">Neutrino Physics | The biggest apparatus for the tiniest particle</p>
                     </div>
                     
                     <p>As planned, our first couple of videos in making will be:</p>

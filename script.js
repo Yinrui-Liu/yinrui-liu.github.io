@@ -114,6 +114,27 @@ document.addEventListener('DOMContentLoaded', function() {
     if (themeToggle) {
         themeToggle.addEventListener('click', cycleTheme);
     }
+    
+    // Video cover functionality
+    const videoCover = document.getElementById('video-cover');
+    if (videoCover) {
+        videoCover.addEventListener('click', function() {
+            // Hide the cover when clicked
+            this.style.display = 'none';
+        });
+        
+        // Also hide cover when iframe loads (as a backup)
+        const iframe = document.querySelector('iframe[src*="drive.google.com"]');
+        if (iframe) {
+            iframe.addEventListener('load', function() {
+                setTimeout(() => {
+                    if (videoCover) {
+                        videoCover.style.display = 'none';
+                    }
+                }, 1000);
+            });
+        }
+    }
 });
 
 // Add some interactivity to the CV download
