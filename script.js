@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
 });
 
 // Add some interactivity to the CV download
