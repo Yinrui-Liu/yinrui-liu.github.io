@@ -242,7 +242,7 @@
 
     <!-- Left Navigator -->
     <nav class="left-navigator">
-        <h4>Research Sections</h4>
+        <h4>Research Projects</h4>
         <ul>
             <li><a href="#fsi-research" class="nav-link">Transformer Model for Particle Propagation within the Nucleus</a></li>
             <li><a href="#generative-models" class="nav-link">Generative Models for Fast Simulation of LArTPC Events</a></li>
@@ -261,7 +261,7 @@
                     <p>
                         <figure style="float: right; width: 325px; margin: 0 0 10px 15px;">
                             <img src="figures/ProtoDUNE.png" alt="ProtoDUNE" style="width: 100%; height: auto; border-radius: 2px;">
-                            <figcaption style="font-size: 12px; text-align: center; margin-top: 5px; font-style: normal;">A photo inside DUNE's prototype detector, ProtoDUNE at CERN, which uses liquid argon time projection chamber (LArTPC) technology to detect neutrinos. The future DUNE far detector modules each will be 20 times larger!</figcaption>
+                            <figcaption style="font-size: 12px; text-align: center; margin-top: 2px; font-style: normal;">A photo inside DUNE's prototype detector, ProtoDUNE at CERN, which uses liquid argon time projection chamber (LArTPC) technology to detect neutrinos. The future DUNE far detector modules each will be 20 times larger!</figcaption>
                         </figure>
                         I am an experimental particle physicist, with a focus on the upcoming Deep Underground Neutrino Experiment (<a href="https://www.dunescience.org" class="nav-link">DUNE</a>) during my PhD. 
                         We aim to use neutrinos to probe the mystery of matter-antimatter asymmetry.
@@ -269,16 +269,15 @@
                         Below are highlights of some of my research work during my PhD.
                     </p>
                     
-                    <h3 id="fsi-research" style="margin-top: 20px;">Transformer Model for Particle Propagation within the Nucleus</h3>
-                    <p>When a neutrino is detected through its interaction with nucleus, it creates hadronic particles which undergo rescattering within the nucleus, complicating final-state reconstruction. 
-                        This effect, called "final-state interactions" (FSI), has been a focus of neutrino interaction modeling. However, advanced models are computationally expensive. 
-                        Working with Kazu Terao and Patrick Tsang at SLAC, we developed a transformer model that is trained on the advanced simulations.
-                        Analogous to words in language models, different types of particles are treated as tokens, with spatial coordinates and four-momenta as feature variables.
-                        The animation below shows an example of particle propagation within the nucleus from the GiBUU simulator, and the right figure shows the class confusion matrix between the predicted and true particle types, with an overall accuracy of 97%. 
-                        Our current efforts focus on upscaling the sample size and achieving a more balanced training set, and ultimately, we aim to use this brand new method for neutrino event generation.
+                    <h3 id="fsi-research" style="margin-top: 40px;">Transformer Model for Particle Propagation within the Nucleus</h3>
+                    <p>When we detect a neutrino through its interaction with a nucleus, it creates particles that bounce around inside the nucleus before escaping (as shown in the animation below), making it difficult to reconstruct what actually happened. 
+                        This effect, called "final-state interactions" (FSI), has been a focus of neutrino interaction modeling. 
+                        Working with Kazuhiro Terao and Patrick Tsang at SLAC, we developed a transformer model—similar to those used in language processing—that learns to predict particle propagation within the nucleus.
+                        Just as language models treat words as tokens, our model treats different particle types as tokens, using their positions and four-momenta as feature variables.
+                        Our current results have achieved a 97% accuracy in predicting particle types, with ongoing work to expand the training dataset and apply this new method to generating neutrino events. [<a href="https://github.com/Yinrui-Liu/GiBUU_viz" class="nav-link">GitHub</a>]
                     </p>
                     
-                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 5px; align-items: center;">
+                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 5px; align-items: flex-start;">
                         <div style="position: relative; display: inline-block;">
                             <img src="figures/GiBUU.gif" alt="GiBUU Animation" style="height: 250px; ">
                             <div style="position: absolute; top: 35px; left: 15px; background: rgba(255,255,255,0); padding: 10px; border-radius: 5px; font-size: 8px; color: black;">
@@ -294,79 +293,123 @@
                         </div>
                         <img src="figures/GiBUU_acc.pdf" alt="LArTPC Figure 2" class="figure" style="height: 250px; object-fit: contain;">
                     </div>
+                    <figcaption style="font-size: 12px; text-align: center; margin-top: 2px; font-style: normal;">
+                        Left: Animation of particle propagation within an argon nucleus from <a href="https://gibuu.hepforge.org" class="nav-link">GiBUU</a> simulation, which is what our model is trained on. 
+                        Right: Confusion matrix showing particle type prediction accuracy.
+                    </figcaption>
                     
-                    <h3 id="generative-models">Generative Models for Fast Simulation of LArTPC Events</h3>
-                    <p>As experiments grow more sophisticated and data volume increases, Monte-Carlo simulation gradually becomes a bottleneck.
-                        Take DUNE for example, the time to simulate a neutrino event given current computing devices even takes longer than recording an event at near detector.
-                        By statistically extracting complex physics from high-dimensional parameter spaces, ML-based simulation is promising to speed up the simulation process.
-                        I'm working on developing generative models to simulate LArTPC events. By treating each event as a cloud of energy deposition points, we trained a continuous-normalizing-flow model on Geant4 simulated events.
-                        The figures below show some training events and the generated events, left for shower-like and right for track-like events.
-                        It shows that the generative model successfully replicated the visual features, while differences can still be seen. 
-                        Further quantitative studies are ongoing to ensure the generated events exhibit the same physics as the input simulations.
+                    <h3 id="generative-models" style="margin-top: 30px;">Generative Models for Fast Simulation of LArTPC Events</h3>
+                    <p>As particle physics experiments become more sophisticated, traditional computer simulations may become a bottleneck.
+                        For example, simulating a single neutrino event for DUNE can take longer than actually recording the event in its near detector.
+                        Machine learning offers a promising solution by learning to generate realistic particle interactions from existing simulation data.
+                        I'm developing generative models that treat each particle event as a cloud of energy deposits, training them to create new events that look and behave like real physics.
+                        The figures below compare original simulation events by <a href="https://geant4.web.cern.ch" class="nav-link">Geant4</a> (top row) with AI-generated events (bottom row) for electron showers and proton tracks.
+                        While the AI successfully replicates some visual patterns, ongoing studies ensure the generated events maintain the correct physics.
                     </p>
                     
-                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 5px; align-items: center;">
-                        <img src="figures/Generated_e.png" alt="LArTPC Figure 1" class="figure" style="height: 210px; object-fit: contain;">
-                        <img src="figures/Generated_p.png" alt="LArTPC Figure 2" class="figure" style="height: 210px; object-fit: contain;">
+                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 5px; align-items: flex-start;">
+                        <div>
+                            <img src="figures/Generated_e.png" alt="LArTPC Figure 1" class="figure" style="height: 210px; object-fit: contain;">
+                        </div>
+                        <div>
+                            <img src="figures/Generated_p.png" alt="LArTPC Figure 2" class="figure" style="height: 210px; object-fit: contain;">
+                        </div>
                     </div>
+                    <figcaption style="font-size: 12px; text-align: center; margin-top: 2px; font-style: normal;">
+                        Left: Original (top) vs. AI-generated (bottom) electron shower events in liquid argon. 
+                        Right: Original (top) vs. AI-generated (bottom) proton track events in liquid argon.
+                    </figcaption>
 
                     <h3 id="hadron-argon">Hadron-Argon Cross-Section Measurements at ProtoDUNE (PhD Thesis)</h3>
-                    <p>In my thesis analysis, I led the flagship cross-section measurements at ProtoDUNE, 
-                        which is the total inelastic cross section of pion and proton on argon targets in the sub-GeV energy regime. 
-                        Such measurements are critical input for DUNE neutrino interaction models as they provide the first argon dataset for constraining the final-state interactions (FSI) in DUNE energy regime.
-                        I conducted end-to-end data analysis, and developed a statistical framework for hadron-argon cross-section measurements [<a href="https://www.mdpi.com/2410-390X/8/1/15" class="nav-link">Instruments</a>, <a href="https://github.com/Yinrui-Liu/hadron-Ar_XS" class="nav-link">GitHub</a>].
-                        The physics result is completing DUNE internal review, with a <a href="https://docs.dunescience.org/cgi-bin/private/ShowDocument?docid=30273" class="nav-link">publication</a> to be submitted to PRL. 
-                        The figures below present the main results showing the measured cross sections along with model predictions (left for pion and right for proton).
+                    <p>For my PhD thesis, I led the first-ever measurements of how positive pions and protons interact with argon nuclei at the energies relevant to DUNE.
+                        These "cross-section" measurements tell us how often these particles collide with argon atoms, which is crucial for modeling neutrino interactions in liquid argon experiments like DUNE.
+                        I developed new statistical methods and analysis framework to extract these measurements from ProtoDUNE data [<a href="https://www.mdpi.com/2410-390X/8/1/15" class="nav-link">Instruments</a>, <a href="https://github.com/Yinrui-Liu/hadron-Ar_XS" class="nav-link">GitHub</a>].
+                        The results are currently under DUNE internal review, with a <a href="https://docs.dunescience.org/cgi-bin/private/ShowDocument?docid=30273" class="nav-link">publication</a> to be submitted to Physical Review Letters.
+                        The figures below show our main results, with measured cross sections overlaid on theoretical predictions. No significant tension is observed given the current experimental uncertainties.
                     </p>
                     
-                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 10px; align-items: center;">
-                        <img src="figures/XS_model_211.png" alt="LArTPC Figure 1" class="figure" style="height: 230px; object-fit: contain;">
-                        <img src="figures/XS_model_2212.png" alt="LArTPC Figure 2" class="figure" style="height: 230px; object-fit: contain;">
+                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 10px; align-items: flex-start;">
+                        <div>
+                            <img src="figures/XS_model_211.pdf" alt="LArTPC Figure 1" class="figure" style="height: 230px; object-fit: contain;">
+                        </div>
+                        <div>
+                            <img src="figures/XS_model_2212.pdf" alt="LArTPC Figure 2" class="figure" style="height: 230px; object-fit: contain;">
+                        </div>
                     </div>
+                    <figcaption style="font-size: 12px; text-align: center; margin-top: 2px; font-style: normal;">
+                        Left: Measured $π⁺$-argon cross section overlaid with different theoretical models.
+                        Right: Measured proton-argon cross section overlaid with different theoretical models.
+                    </figcaption>
 
                     <h3 id="fsi-modeling">Final-State Interaction (FSI) Modeling in Neutrino Generators</h3>
-                    <p>To further study how to utilize ProtoDUNE data to inform DUNE neutrino interaction models, I work with Stephen Dolan and Laura Munteanu at CERN and conducted several studies on FSI models in neutrino generators,
-                        including developing a reweighting tool facilitating FSI model transformation, which has been integrated into <a href="https://github.com/NuSystematics/nusystematics" class="nav-link">NuSystematics</a>.
-                        As a capstone, we recently worked on a <a href="https://docs.dunescience.org/cgi-bin/private/ShowDocument?docid=34761" class="nav-link">theory paper</a> which studies the impact of FSI modeling on neutrino oscillation parameters. 
-                        With DUNE as a case study, the figures below show how variations of using different FSI models can obscure genuine oscillation effects (particularly from the bottom ratio plots), 
-                        with the left figure focusing on $\Delta m^2_{21}$ in the $\nu_\mu$ disappearance analysis and the right figure focusing on the $\theta_{12}$ in the $\nu_e$ appearance analysis.
+                    <p>Building on my cross-section measurements, I collaborated with Stephen Dolan and Laura Munteanu at CERN to study how different interaction models affect neutrino reconstruction.
+                        When neutrinos interact with atomic nuclei, the resulting particles can scatter multiple times before escaping—a process called "final-state interactions" (FSI).
+                        This is why the cross-section measurements are crucial, as they provide essential data to inform these FSI models in neutrino generators.
+                        We conducted several studies on FSI modeling, with a <a href="https://docs.dunescience.org/cgi-bin/private/ShowDocument?docid=34761" class="nav-link">theory paper</a> to be released soon, which demonstrates how uncertainties in these models can mask genuine neutrino oscillation signals.
+                        Using DUNE as a case study, the figures below show how different modeling choices can obscure the true oscillation effects we want to measure,
+                        particularly visible from the bottom ratio plots.
                     </p>
                     
-                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 20px; align-items: center;">
-                        <img src="figures/FSI_numu_m23.png" alt="LArTPC Figure 1" class="figure" style="height: 300px; object-fit: contain;">
-                        <img src="figures/FSI_nue_dCP90.png" alt="LArTPC Figure 2" class="figure" style="height: 300px; object-fit: contain;">
+                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 20px; align-items: flex-start;">
+                        <div>
+                            <img src="figures/FSI_numu_m23.png" alt="LArTPC Figure 1" class="figure" style="height: 300px; object-fit: contain;">
+                        </div>
+                        <div>
+                            <img src="figures/FSI_nue_dCP90.png" alt="LArTPC Figure 2" class="figure" style="height: 300px; object-fit: contain;">
+                        </div>
                     </div>
+                    <figcaption style="font-size: 12px; text-align: center; margin-top: 2px; font-style: normal;">
+                        Left: How different FSI models affect neutrino mass difference measurements in DUNE's $ν_μ$ disappearance analysis.
+                        Right: How different FSI models affect matter-antimatter asymmetry measurements in DUNE's $ν_e$ appearance analysis.
+                        DUNE's ten-year beam exposure is assumed. [<a href="https://link.springer.com/article/10.1140/epjc/s10052-020-08456-z" class="nav-link">EPJC</a>]
+                    </figcaption>
 
                     <h3 id="detector-production">Detector Modules Production and Installation for DUNE</h3>
-                    <p>DUNE's design centers on the liquid argon time projection chamber (LArTPC) technology. 
-                        The most common design, also adopted by DUNE's first far detector (FD1) design, is to use wire planes, also called anode plane assembly (APA).
-                        This <a href="https://hep.yale.edu/yale-henp/lartpc" class="nav-link">page</a> provides a nice description of how LArTPC works with wire detection systems.
-                        UChicago opens a APA factory to produce the detector modules for DUNE FD1, and I am involved in the preparation of the bare frame, before moving it to a robotic machine called "winder". 
-                        The figures below show the APA on the red winder (from the light reflection you can see multiple wire layers with different lining directions) and a piece of video showing the winder in action to wind the wires.
-                        In addition, I was also at CERN in 2022 for the installation of ProtoDUNE and in 2024 serving as a data shifter during summer times.
+                    <p>DUNE's design centers on liquid argon time projection chamber (LArTPC) technology, with a prevailing design that uses multiple layers of sensing wires as readout devices.
+                        These wire planes, called anode plane assemblies (APAs), are the major detector components of DUNE's first far detector (FD1).
+                        This <a href="https://hep.yale.edu/yale-henp/lartpc" class="nav-link">page</a> provides a detailed description of how LArTPC technology works with wire plane readout.
+                        The University of Chicago operates an APA factory to produce detector modules for DUNE FD1, where I work on preparing the bare frames before they move to a robotic "winder" machine.
+                        The figures below show an APA frame on the winder and a video of the winder winding the sensing wires.
+                        In addition to the production work, I also spent time at CERN in 2022 for ProtoDUNE installation and in 2024 as a data shifter during summer operations.
                     </p>
                     
-                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 30px; align-items: center;">
-                        <img src="figures/APA-winder.png" alt="APA Winder" class="figure" style="height: 270px; object-fit: contain;">
-                        <video src="figures/APA-winding.mov" class="figure" style="height: 270px; object-fit: contain;" controls>
-                            Your browser does not support the video tag.
-                        </video>
+                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 30px; align-items: flex-start;">
+                        <div>
+                            <img src="figures/APA-winder.png" alt="APA Winder" class="figure" style="height: 300px; object-fit: contain;">
+                        </div>
+                        <div>
+                            <video src="figures/APA-winding.mov" class="figure" style="height: 300px; object-fit: contain;" controls>
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
                     </div>
+                    <figcaption style="font-size: 12px; text-align: center; margin-top: 2px; font-style: normal;">
+                        Left: APA frame on a robotic winder at the UChicago DUNE factory. From the light reflections, multiple wire layers with different orientations are visible.
+                        Right: Robotic winder in action, precisely winding sensing wires for DUNE detector modules.
+                    </figcaption>
 
                     <h3 id="tetraquark">Observation of the First Doubly-Charged Tetraquark Particle</h3>
-                    <p>Normal hadronic matters consists of either two or three quarks, which are called mesons and baryons.
-                        Only in this century, hadronic particles consists of four and five quarks, called tetraquarks and pentaquarks, are discovered, 
-                        which are referred to as exotic hadrons. In my early PhD, I continued my undergraduate research on hadron spectroscopy using LHCb data. 
-                        I made major contributions to a generic framework for partial wave analysis (PWA) based on TensorFlow (called <a href="https://github.com/jiangyi15/tf-pwa" class="nav-link">TF-PWA</a>),
-                        and applied it to a pair of isospin-related $B$ meson decays. 
-                        I led the analysis which resulted in the observation of the first doubly-charged tetraquark $T^a_{c\bar{s}0}(2900)^{++}$ and its neutral partner $T^a_{c\bar{s}0}(2900)^{0}$, with publications on <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.131.041902" class="nav-link">PRL</a> and <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.108.012017" class="nav-link">PRD</a>.
-                        The figures below show the excess of $T^a_{c\bar{s}0}(2900)^{++}$ in the mass spectrum and its imagination by CERN artists.
+                    <p>Normal hadronic particles are made of either two or three quarks, called mesons and baryons.
+                        Only in this century have we discovered particles made of four and five quarks, called tetraquarks and pentaquarks—collectively known as "exotic hadrons."
+                        In my early PhD, I continued my undergraduate research on hadron spectroscopy using LHCb data.
+                        I made major contributions to a generic framework for partial wave analysis based on TensorFlow (called <a href="https://github.com/jiangyi15/tf-pwa" class="nav-link">TF-PWA</a>),
+                        and applied it to analyze a pair of related $B$ meson decays.
+                        I led the analysis that resulted in the observation of the first doubly-charged tetraquark $T^a_{c\bar{s}0}(2900)^{++}$ and its neutral partner $T^a_{c\bar{s}0}(2900)^{0}$, with publications in <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.131.041902" class="nav-link">PRL</a> and <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.108.012017" class="nav-link">PRD</a>.
+                        The figures below show the tetraquark signal in the mass spectrum and a CERN artist's impression of its structure.
                     </p>
                     
-                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 10px; align-items: center;">
-                        <img src="figures/LHCb-excess.png" alt="LArTPC Figure 1" class="figure" style="height: 210px; object-fit: contain;">
-                        <img src="figures/LHCb-art.png" alt="LArTPC Figure 2" class="figure" style="height: 210px; object-fit: contain;">
+                    <div class="figures-row figures-2" style="display: flex; justify-content: center; gap: 10px; align-items: flex-start;">
+                        <div>
+                            <img src="figures/LHCb-excess.png" alt="LArTPC Figure 1" class="figure" style="height: 210px; object-fit: contain;">
+                        </div>
+                        <div>
+                            <img src="figures/LHCb-art.png" alt="LArTPC Figure 2" class="figure" style="height: 210px; object-fit: contain;">
+                        </div>
                     </div>
+                    <figcaption style="font-size: 12px; text-align: center; margin-top: 2px; font-style: normal;">
+                        Left: Mass spectrum showing the $T^a_{c\bar{s}0}(2900)^{++}$ tetraquark signal (purple histogram with mesh grid) in LHCb data.
+                        Right: Artist's impression of its tetraquark structure (though it's still under debate whether it's a tightly bound state or a "molecule" of two mesons).
+                    </figcaption>
                     
                 </div>
             </section>
