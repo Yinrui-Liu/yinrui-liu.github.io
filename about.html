@@ -114,6 +114,79 @@
         [data-theme="dark"] .content a:hover, [data-theme="dark"] .intro-text a:hover {
             color: #93c5fd;
         }
+        
+        /* Banner styling */
+        .arxiv-banner {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 16px 24px;
+            margin-top: 0px; /* Adjust this value to change spacing from top */
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            text-align: center;
+            max-width: 768px;
+            position: relative;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .arxiv-banner.hidden {
+            display: none;
+        }
+        
+        .arxiv-banner a {
+            color: white;
+            text-decoration: underline;
+            font-weight: 600;
+            transition: opacity 0.2s ease;
+        }
+        
+        .arxiv-banner a:hover {
+            opacity: 0.9;
+        }
+        
+        .banner-close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            line-height: 1;
+            cursor: pointer;
+            padding: 4px 8px;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+            font-weight: 300;
+        }
+        
+        .banner-close:hover {
+            opacity: 1;
+        }
+        
+        /* Dark theme banner */
+        [data-theme="dark"] .arxiv-banner {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .arxiv-banner {
+                margin-top: 0px; /* Adjust this value for mobile spacing from top */
+                margin-bottom: 15px;
+                padding: 14px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .banner-close {
+                top: 6px;
+                right: 10px;
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -134,6 +207,11 @@
 
     <main class="main-content">
         <div class="container">
+            <div class="arxiv-banner" id="arxiv-banner">
+                <button class="banner-close" id="banner-close" aria-label="Close banner">&times;</button>
+                <strong>🎉 New paper on arXiv:</strong> The Role of Final-State Interaction Modeling in Neutrino Energy Reconstruction and Oscillation Measurements (<a href="https://arxiv.org/abs/2511.03964" target="_blank">arXiv:2511.03964</a>)
+            </div>
+            
             <section class="section">
                 <h2>Yinrui Liu</h2>
                 <div class="content">
@@ -173,5 +251,42 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Banner close functionality with time-based expiration (4 hours)
+        document.addEventListener('DOMContentLoaded', function() {
+            const banner = document.getElementById('arxiv-banner');
+            const closeButton = document.getElementById('banner-close');
+            
+            // Change this version number when you want the banner to show again (e.g., when you have a new paper)
+            const BANNER_VERSION = '1';
+            const EXPIRATION_HOURS = 4; // Banner will show again after this many hours
+            const storageKey = 'arxiv-banner-closed-v' + BANNER_VERSION;
+            const closedTimestamp = localStorage.getItem(storageKey);
+            
+            // Check if banner was closed and if expiration time has passed
+            if (closedTimestamp) {
+                const closedTime = parseInt(closedTimestamp);
+                const currentTime = Date.now();
+                const expirationTime = EXPIRATION_HOURS * 60 * 60 * 1000; // Convert hours to milliseconds
+                
+                // If less than expiration time has passed, hide the banner
+                if (currentTime - closedTime < expirationTime) {
+                    banner.classList.add('hidden');
+                } else {
+                    // Expiration time has passed, remove the stored timestamp
+                    localStorage.removeItem(storageKey);
+                }
+            }
+            
+            // Handle close button click
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    banner.classList.add('hidden');
+                    // Store current timestamp
+                    localStorage.setItem(storageKey, Date.now().toString());
+                });
+            }
+        });
+    </script>
 </body>
 </html>
