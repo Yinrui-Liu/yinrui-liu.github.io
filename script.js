@@ -51,8 +51,28 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', fun
     }
 });
 
+// Set active navigation link based on current page
+function setActivePageNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-list a[href$=".html"]');
+    
+    navLinks.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        // Check if the link's href matches the current page
+        // Also handle index.html redirecting to about.html
+        if (linkHref === currentPage || (currentPage === 'index.html' && linkHref === 'about.html')) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}
+
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
+    // Set active page navigation link first
+    setActivePageNavLink();
+    
     // Add smooth scrolling to all anchor links
     const links = document.querySelectorAll('a[href^="#"]');
     
@@ -75,9 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add active class to navigation links based on scroll position
+    // Add active class to navigation links based on scroll position (only for section anchors)
     const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('.nav-list a');
+    const sectionNavLinks = document.querySelectorAll('.nav-list a[href^="#"]');
     
     function updateActiveNavLink() {
         let current = '';
@@ -92,7 +112,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        navLinks.forEach(link => {
+        // Only update section anchor links, not page links
+        sectionNavLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === '#' + current) {
                 link.classList.add('active');
@@ -100,11 +121,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Update active link on scroll
-    window.addEventListener('scroll', updateActiveNavLink);
-    
-    // Initial call to set active link
-    updateActiveNavLink();
+    // Update active link on scroll (only if there are sections)
+    if (sections.length > 0) {
+        window.addEventListener('scroll', updateActiveNavLink);
+        // Initial call to set active link
+        updateActiveNavLink();
+    }
     
     // Initialize theme
     initTheme();

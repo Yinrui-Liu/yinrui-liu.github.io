@@ -10,6 +10,27 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Prevent FOUC by setting theme immediately -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themes = ['auto', 'light', 'dark'];
+            let theme = 'auto'; // default
+            
+            if (savedTheme && themes.includes(savedTheme)) {
+                theme = savedTheme;
+            }
+            
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else if (theme === 'auto') {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (prefersDark) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            }
+        })();
+    </script>
     <style>
         /* Main content links styling */
         .content a {
