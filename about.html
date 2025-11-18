@@ -9,6 +9,16 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
     
     <!-- Prevent FOUC by setting theme immediately -->
     <script>
@@ -122,11 +132,11 @@
             padding: 16px 24px;
             margin-top: 0px; /* Adjust this value to change spacing from top */
             margin-bottom: 20px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-left: 0;
+            margin-right: 0;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-            text-align: center;
+            text-align: left;
             max-width: 768px;
             position: relative;
             transition: opacity 0.3s ease, transform 0.3s ease;
@@ -209,7 +219,9 @@
         <div class="container">
             <div class="arxiv-banner" id="arxiv-banner">
                 <button class="banner-close" id="banner-close" aria-label="Close banner">&times;</button>
-                <strong>🎉 New paper on arXiv:</strong> The Role of Final-State Interaction Modeling in Neutrino Energy Reconstruction and Oscillation Measurements (<a href="https://arxiv.org/abs/2511.03964" target="_blank">arXiv:2511.03964</a>)
+                <strong>🎉 New paper on arXiv</strong> (Nov. 14, 2025): First Measurement of $\pi^+$–Ar and $p$–Ar Total Inelastic Cross Sections in the Sub-GeV Energy Regime with ProtoDUNE-SP Data (<a href="https://arxiv.org/abs/2511.11925" target="_blank">arXiv:2511.11925</a>)
+                <br>
+                <strong>🎉 New paper on arXiv</strong> (Nov. 6, 2025): The Role of Final-State Interaction Modeling in Neutrino Energy Reconstruction and Oscillation Measurements (<a href="https://arxiv.org/abs/2511.03964" target="_blank">arXiv:2511.03964</a>)
             </div>
             
             <section class="section">
